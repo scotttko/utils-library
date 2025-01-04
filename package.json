@@ -1,0 +1,38 @@
+{
+  "name": "utils-library",
+  "version": "1.0.0",
+  "repository": "https://github.com/scotttko/utils-library.git",
+  "author": "scotttko <scott@lightscale.io>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.mjs",
+      "require": "./dist/utils/index.js"
+    },
+    "./storage": {
+      "import": "./dist/storage/index.mjs",
+      "require": "./dist/storage/index.js"
+    },
+    "./date": {
+      "import": "./dist/date/index.mjs",
+      "require": "./dist/date/index.js"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}
