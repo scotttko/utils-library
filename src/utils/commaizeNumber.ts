@@ -13,7 +13,7 @@ export function commaizeNumber(value: string | number) {
     const integers = splited[0].replace(commaRegex, ","); // 정수
     const decimals = splited[1]; // 소수
 
-    return `${integers}${decimals ? `.${decimals}` : ""}`;
+    return `${integers}${!!decimals && `.${decimals}`}`;
   } else {
     // 정수일 경우
     return numStr.replace(commaRegex, ",");

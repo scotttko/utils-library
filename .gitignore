@@ -3,3 +3,9 @@ node_modules
 
 # build directories
 dist
+
+# Coverage output
+coverage
+
+#local test
+local-test.js
