@@ -1,4 +1,4 @@
-import { shortenAddress } from "../shortenAddress";
+import { shortenAddress } from "../../web3/shortenAddress";
 
 describe("shortenAddress", () => {
   it("should shorten a valid Ethereum address", () => {

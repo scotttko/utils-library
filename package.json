@@ -21,13 +21,9 @@
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
     },
-    "./storage": {
-      "import": "./dist/storage/index.mjs",
-      "require": "./dist/storage/index.js"
-    },
-    "./date": {
-      "import": "./dist/date/index.mjs",
-      "require": "./dist/date/index.js"
+    "./web3": {
+      "import": "./dist/web3/index.mjs",
+      "require": "./dist/web3/index.js"
     }
   },
   "devDependencies": {

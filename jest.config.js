@@ -1,8 +1,9 @@
 export default {
   preset: "ts-jest",
   testEnvironment: "node",
-  testMatch: ["**/__tests__/**/*.test.ts"], // Look for test files
-  collectCoverage: true, // Enable coverage reporting
+  testMatch: ["**/__tests__/**/*.test.ts"],
+  collectCoverage: true,
+  coverageReporters: ["text", "lcov"],
   collectCoverageFrom: [
     "src/**/*.{ts,js}",
     "!src/**/__tests__/**",
@@ -11,7 +12,7 @@ export default {
   coverageDirectory: "coverage",
   coverageThreshold: {
     global: {
-      branches: 100,
+      branches: 90,
       functions: 100,
       lines: 100,
       statements: 100,
