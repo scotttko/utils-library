@@ -1,0 +1,42 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: yarn install
+
+      # Step 4: Validate version tag matches package.json
+      - name: Validate version tag
+        run: |
+          VERSION_FROM_PACKAGE=$(node -p "require('./package.json').version")
+          VERSION_FROM_TAG=${GITHUB_REF#refs/tags/v}
+          if [ "$VERSION_FROM_PACKAGE" != "$VERSION_FROM_TAG" ]; then
+            echo "ERROR: Tag version ($VERSION_FROM_TAG) does not match package.json version ($VERSION_FROM_PACKAGE)"
+            exit 1
+          fi
+
+      # Step 5: Publish to npm
+      - name: Publish to npm
+        run: yarn publish --non-interactive --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
